@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,7 @@ public class calendarActivity extends AppCompatActivity {
 
         noteRef = db.collection("Notebook").document(docPath);
         currentUser =(String) getIntent().getStringExtra("currentUser");
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);

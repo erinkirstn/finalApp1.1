@@ -30,6 +30,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class MainActivity2 extends AppCompatActivity {
 
     private Button button;
+    private Button calButton;
     private String transferData;
     private TextView textViewData;
     private String user;
@@ -67,8 +68,17 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        calButton = (Button) findViewById(R.id.calendarButton);
+        calButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                openCalActivity();
+            }
+        });
+
 
         transferData = (String) getIntent().getStringExtra("TRANSFER_DATA");
+
         user = (String) getIntent().getStringExtra("currentUser");
 
 
@@ -158,6 +168,12 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void openActivity3() {
         Intent intent = new Intent(this, addAssignmentActivity.class);
+        intent.putExtra("currentUser", user);
+        startActivity(intent);
+    }
+
+    public void openCalActivity() {
+        Intent intent = new Intent(this, calView.class);
         intent.putExtra("currentUser", user);
         startActivity(intent);
     }
