@@ -44,6 +44,10 @@ public class MainActivity2 extends AppCompatActivity {
 
     private EditText editTextTitle;
     private EditText editTextDescription;
+    private String color1 = "#80BACB";
+    private String color2 = "#4D81AE";
+    private String color3 = "#f4acb7";
+    private String color4 = "#DEB1C8";
 
     /*
     Firestore tutorial I followed: Coding In Flow Firestore Tutorials
@@ -52,6 +56,10 @@ public class MainActivity2 extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference notebookRef = db.collection("Notebook");
     private DocumentReference noteRef = db.collection("Notebook").document("My First Note");
+    
+    private LinearLayout assignmentLayout;
+    private int buttonCount;
+    Button newbtn;
 
 
 
@@ -108,7 +116,8 @@ public class MainActivity2 extends AppCompatActivity {
                                 String date = note.getDate();
                                 String user = note.getUser();
 
-                                data += "\nTitle: " + title + "\nDescription:" + description + "\nDate:" + date;
+                                data = "\nTitle: " + title + "\nDescription:" + description + "\nDate:" + date;
+                                doAddButton(data);
                             }
                             textViewData.setText(data);
                         }
@@ -171,6 +180,44 @@ public class MainActivity2 extends AppCompatActivity {
         intent.putExtra("currentUser", user);
         startActivity(intent);
     }
+    private void doAddButton(String s) {
+        assignmentLayout = (LinearLayout) findViewById(R.id.assignmentLayout);
+
+        newbtn = new Button(this);
+        newbtn.setText(s);
+        assignmentLayout.addView(newbtn);
+
+        newbtn.setBackgroundResource(R.drawable.buttons);
+        Drawable buttonDrawable = newbtn.getBackground();
+        buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+        newbtn.setBackground(buttonDrawable);
+        LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        buttonLayoutParams.setMargins(0, 0, 0, 40);
+        newbtn.setLayoutParams(buttonLayoutParams);
+        newbtn.setWidth(930);
+        newbtn.setTransformationMethod(null);
+        newbtn.setTextColor(Color.parseColor("#FFFFFF"));
+        newbtn.setPadding(40,20,20,20);
+        newbtn.setTextSize(20);
+        buttonCount++;
+        newbtn.setTypeface(ResourcesCompat.getFont(this, R.font.circerounded));
+
+
+        DrawableCompat.setTint(buttonDrawable, Color.parseColor(color1));
+        if((buttonCount % 4) == 0){
+            DrawableCompat.setTint(buttonDrawable, Color.parseColor(color2));
+        }
+        else if((buttonCount % 2) == 0){
+            DrawableCompat.setTint(buttonDrawable, Color.parseColor(color3));
+        }
+        else if((buttonCount % 3) == 0){
+            DrawableCompat.setTint(buttonDrawable, Color.parseColor(color4));
+        }
+        newbtn.setGravity(Gravity.LEFT);
+
+       //android:gravity="left"
+    }
+
 
     public void openCalActivity() {
         Intent intent = new Intent(this, calView.class);
