@@ -1,4 +1,5 @@
 package com.example.finalapp;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,9 +9,18 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Locale;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 public class timerActivity extends AppCompatActivity {
     private EditText mEditTextInput;
     private TextView mTextViewCountDown;
@@ -22,6 +32,13 @@ public class timerActivity extends AppCompatActivity {
     private long mStartTimeInMillis;
     private long mTimeLeftInMillis;
     private long mEndTime;
+    private ImageButton homeButton;
+
+    public String currentUser;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference notebookRef = db.collection("Notebook");
+    private DocumentReference noteRef = db.collection("Notebook").document("My First Note");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +48,17 @@ public class timerActivity extends AppCompatActivity {
         mButtonSet = findViewById(R.id.button_set);
         mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
+        homeButton = (ImageButton) findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                openMainActivity();
+            }
+        });
+
+        currentUser = (String) getIntent().getStringExtra("currentUser");
+
+
         mButtonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,5 +203,11 @@ public class timerActivity extends AppCompatActivity {
                 startTimer();
             }
         }
+    }
+
+    public void openMainActivity() {
+        Intent intent = new Intent(this, MainActivity2.class);
+        intent.putExtra("currentUser", currentUser);
+        startActivity(intent);
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -37,6 +38,7 @@ public class addAssignmentActivity extends AppCompatActivity {
     private EditText editTextTitle;
     private EditText editTextDescription;
     private TextView editDate;
+    private ImageButton homeButton;
 
     private ListenerRegistration noteListener;
 
@@ -67,7 +69,13 @@ public class addAssignmentActivity extends AppCompatActivity {
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_description);
         editDate = findViewById(R.id.date);
-
+        homeButton = (ImageButton) findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                openMainActivity();
+            }
+        });
 
 
         Button button = findViewById(R.id.addDueDateButton);
@@ -85,8 +93,8 @@ public class addAssignmentActivity extends AppCompatActivity {
 
         final String id = notebookRef.document().getId();
 
-            // Set the text box equal to the date selected in the calendar activity
-            editDate.setText(dateString);
+        // Set the text box equal to the date selected in the calendar activity
+        editDate.setText(dateString);
 
 
 
@@ -105,7 +113,7 @@ public class addAssignmentActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 note.setTitle(editTextTitle.getText().toString());
                 note.setDate(editDate.getText().toString());
                 note.setDescription(editTextDescription.getText().toString());
@@ -169,13 +177,11 @@ public class addAssignmentActivity extends AppCompatActivity {
         String description = editTextDescription.getText().toString();
         String date = editDate.getText().toString();
 
-
-
-
-
-
-
-
+    }
+    public void openMainActivity() {
+        Intent intent = new Intent(this, MainActivity2.class);
+        intent.putExtra("currentUser", currentUser);
+        startActivity(intent);
     }
 
 
@@ -184,5 +190,7 @@ public class addAssignmentActivity extends AppCompatActivity {
 
 
 
-    }
+}
+
+
 

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ public class calView extends AppCompatActivity {
     private static final String KEY_DATE = "date";
     private TextView editDate;
 
-    private Button button;
+    private ImageButton button;
 
     private String transferData;
     private TextView textViewData;
@@ -43,7 +44,7 @@ public class calView extends AppCompatActivity {
         setContentView(R.layout.activity_cal_view);
 
 
-        button = (Button) findViewById(R.id.calendarButton2);
+        button = (ImageButton) findViewById(R.id.calendarButton2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){

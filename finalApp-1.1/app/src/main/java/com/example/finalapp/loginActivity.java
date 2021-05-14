@@ -27,7 +27,6 @@ public class loginActivity extends AppCompatActivity {
 
     public String email;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +50,6 @@ public class loginActivity extends AppCompatActivity {
 
         if(fAuth.getCurrentUser() != null){
             Intent intent = new Intent( loginActivity.this, MainActivity2.class);
-
             intent.putExtra("currentUser", fAuth.getCurrentUser().getEmail());
             startActivity(intent);
         }

@@ -5,42 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="110dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginRight="268dp"
+        android:fontFamily="@font/circerounded"
+        android:src="@drawable/homebutton"
+        android:text="Add Assignment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
 
     <TextView
         android:id="@+id/addAssignmentText"
-        android:layout_width="312dp"
-        android:layout_height="57dp"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:fontFamily="casual"
-        android:text="Add Assignment:"
+        android:fontFamily="@font/circerounded"
+        android:text="Add Assignment"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/mediumFontSize"
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
+        app:layout_constraintVertical_bias="0.123" />
 
     <TextView
         android:id="@+id/titleText"
         android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="284dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="57dp"
         android:layout_marginEnd="263dp"
-        android:layout_marginRight="263dp"
-        android:layout_marginBottom="387dp"
-        android:fontFamily="casual"
+        android:layout_marginRight="266dp"
+        android:layout_marginBottom="384dp"
+        android:fontFamily="@font/circerounded"
         android:text="Title:"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/mediumFontSize"
+        android:textSize="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/dueDateText"
@@ -52,97 +61,77 @@
         android:layout_marginEnd="218dp"
         android:layout_marginRight="218dp"
         android:layout_marginBottom="527dp"
-        android:fontFamily="casual"
+        android:fontFamily="@font/circerounded"
         android:text="Due Date:"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/mediumFontSize"
+        android:textSize="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/notesText"
-        android:layout_width="119dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginLeft="49dp"
-        android:layout_marginTop="378dp"
-        android:layout_marginEnd="243dp"
-        android:layout_marginRight="243dp"
-        android:layout_marginBottom="307dp"
-        android:fontFamily="casual"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="57dp"
+        android:layout_marginEnd="263dp"
+        android:layout_marginRight="266dp"
+        android:layout_marginBottom="332dp"
+        android:fontFamily="@font/circerounded"
         android:text="Notes:"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/mediumFontSize"
+        android:textSize="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <EditText
-        android:id="@+id/edit_text_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginLeft="168dp"
-        android:layout_marginTop="284dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginBottom="402dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.687"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edit_text_description"
-        android:layout_width="218dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="178dp"
-        android:layout_marginLeft="178dp"
-        android:layout_marginTop="378dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="277dp"
+        android:layout_width="350dp"
+        android:layout_height="220dp"
+        android:background="@drawable/textboxdesign"
         android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+        android:fontFamily="@font/circerounded"
+        android:inputType="textImeMultiLine"
+        android:paddingLeft="10dp"
+        android:textSize="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.741" />
 
-    <Button
-        android:id="@+id/addAssignmentButton"
-        android:layout_width="63dp"
-        android:layout_height="52dp"
+    <EditText
+        android:id="@+id/edit_text_title"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginStart="168dp"
         android:layout_marginLeft="168dp"
-        android:layout_marginTop="650dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginRight="180dp"
-        android:layout_marginBottom="29dp"
-        android:background="@drawable/buttons"
-        android:foreground="@android:drawable/ic_menu_add"
-        android:onClick="addNote"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="402dp"
+        android:background="@drawable/textboxdesign"
+        android:ems="10"
+        android:fontFamily="@font/circerounded"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:textSize="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
-    />
-
-
-
-
-    ]]>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.762" />
 
     <Button
         android:id="@+id/addDueDateButton"
-        android:layout_width="63dp"
+        android:layout_width="160dp"
         android:layout_height="52dp"
         android:layout_marginStart="252dp"
         android:layout_marginLeft="252dp"
@@ -150,32 +139,44 @@
         android:layout_marginEnd="96dp"
         android:layout_marginRight="96dp"
         android:layout_marginBottom="527dp"
-        android:background="@drawable/buttons"
-        android:foreground="@android:drawable/ic_menu_add"
+        android:background="@drawable/textboxdesign"
+        android:fontFamily="@font/circerounded"
+        android:text="Add Date"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="174dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="193dp"
-        android:layout_marginLeft="193dp"
-        android:layout_marginTop="206dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginBottom="462dp"
-        android:fontFamily="casual"
+        android:layout_width="160dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
+        android:fontFamily="@font/circerounded"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/mediumFontSize"
+        android:textSize="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.315" />
 
+    <Button
+        android:id="@+id/addAssignmentButton"
+        android:layout_width="150dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginRight="128dp"
+        android:fontFamily="@font/circerounded"
+        android:onClick="addNote"
+        android:text="Add Assignment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.933" />
 
-    .
 
 </androidx.constraintlayout.widget.ConstraintLayout>

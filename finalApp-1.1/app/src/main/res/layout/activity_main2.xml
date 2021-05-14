@@ -53,7 +53,6 @@
         android:layout_marginEnd="132dp"
         android:layout_marginRight="132dp"
         android:fontFamily="@font/circerounded"
-        android:onClick="logout"
         android:text="Add Assignment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

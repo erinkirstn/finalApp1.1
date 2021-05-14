@@ -28,7 +28,7 @@ public class AssignmentOptions extends AppCompatActivity {
     private Button deleteButton;
     private Button startButton;
     private String transferData;
-    private String currentUser;
+   private String currentUser;
     private String ddescription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +43,22 @@ public class AssignmentOptions extends AppCompatActivity {
         startButton = (Button) findViewById(R.id.startButton);
         deleteButton = (Button) findViewById(R.id.deleteButton);
         transferData = (String) getIntent().getStringExtra("TRANSFER_DATA");
-        user = (String) getIntent().getStringExtra("currentUser");
+        currentUser = (String) getIntent().getStringExtra("currentUser");
         ddescription = intent.getStringExtra(MainActivity2.DESCRIPTION);
 
-
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                deleteThis();
-            }
-
-        });
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                notebookRef.whereEqualTo("user",currentUserser)
+                openTimer();
+            }
+
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                notebookRef.whereEqualTo("user",currentUser)
                         .get()
                         // Query Snapshot = Multiple document snapshots
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -78,8 +78,8 @@ public class AssignmentOptions extends AppCompatActivity {
                                     String date = note.getDate();
                                     String user = note.getUser();
 
-                                    if(description == "789"){
-                                        openTimer();
+                                    if(description==MainActivity2.DESCRIPTION){
+                                        documentSnapshot.getReference().delete();
                                     }
                                 }
 
@@ -90,9 +90,6 @@ public class AssignmentOptions extends AppCompatActivity {
         });
     }
 
-    public void deleteThis() {
-        openTimer();
-    }
     public void openTimer(){
         Intent intent = new Intent(this, timerActivity.class);
         intent.putExtra("currentUser", currentUser);
