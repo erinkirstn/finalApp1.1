@@ -8,70 +8,64 @@
 
 
     <Button
-        android:id="@+id/storeButton"
-        android:layout_width="49dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="669dp"
-        android:background="@drawable/buttons"
-        android:foreground="@android:drawable/btn_star"
+        android:id="@+id/ThemesButton"
+        android:layout_width="105dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="276dp"
+        android:layout_marginRight="276dp"
+        android:text="Themes"
+        android:fontFamily="@font/circerounded"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/calendarButton"
-        android:layout_width="49dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="669dp"
-        android:background="@drawable/buttons"
-        android:foreground="@android:drawable/ic_menu_my_calendar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.748"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.048" />
+
+    <ImageButton
+        android:id="@+id/calendarButton"
+        android:layout_width="105dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginRight="152dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048"
+        android:src="@drawable/cal3" />
 
     <Button
         android:id="@+id/logoutButton"
-        android:layout_width="66dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/buttons"
+        android:layout_width="105dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:onClick="logout"
         android:text="Log Out"
+        android:fontFamily="@font/circerounded"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <Button
         android:id="@+id/addHomeworkButton"
-        android:layout_width="134dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginRight="136dp"
-        android:background="@drawable/buttons"
+        android:layout_width="150dp"
+        android:layout_height="67dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
+        android:fontFamily="@font/circerounded"
+        android:onClick="logout"
         android:text="Add Assignment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918" />
+        app:layout_constraintVertical_bias="0.944" />
 
     <TextView
         android:id="@+id/assignmentsTitle"
         android:layout_width="262dp"
         android:layout_height="58dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginRight="108dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginRight="112dp"
         android:fontFamily="@font/circerounded"
         android:text="My Assignments:"
         android:textColor="@android:color/black"
@@ -79,17 +73,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintVertical_bias="0.188" />
+
 
     <ScrollView
-        android:layout_width="340dp"
-        android:layout_height="400dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_width="320dp"
+        android:layout_height="380dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534">
+        app:layout_constraintVertical_bias="0.572">
 
         <LinearLayout
             android:id="@+id/assignmentLayout"

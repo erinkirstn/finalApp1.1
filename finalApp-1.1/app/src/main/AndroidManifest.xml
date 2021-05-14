@@ -11,11 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".calView"></activity>
-        <activity android:name=".calendarActivity" />
+        <activity android:name=".calendarActivity"></activity>
         <activity android:name=".MainActivity2" />
         <activity android:name=".addAssignmentActivity" />
         <activity android:name=".signUpActivity" />
+        <activity android:name=".timerActivity" />
+        <activity android:name=".calView"/>
+        <activity android:name=".AssignmentOptions"/>
         <activity android:name=".loginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,18 +7,22 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.LinearLayout;
-import android.view.Gravity;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,10 +41,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class MainActivity2 extends AppCompatActivity {
 
     private Button button;
-    private Button calButton;
+    private ImageButton calButton;
     private String transferData;
     private TextView textViewData;
-    private String user;
+    private String currentUser;
+    public static final String TITLE = "com.example.application.example.";
+    public static final String DESCRIPTION = "com.example.application.example.EXTRA_NUMBER";
+    public static final String DATE = "com.example.application.example.EXTRA_NUMBER";
 
     private static final String TAG = "addAssignmentActivity";
 
@@ -51,10 +58,13 @@ public class MainActivity2 extends AppCompatActivity {
 
     private EditText editTextTitle;
     private EditText editTextDescription;
-    private String color1 = "#80BACB";
-    private String color2 = "#4D81AE";
-    private String color3 = "#f4acb7";
-    private String color4 = "#DEB1C8";
+    public String color1 = "#80BACB";
+    public String color2 = "#4D81AE";
+    public String color3 = "#f4acb7";
+    public String color4 = "#DEB1C8";
+
+
+
 
     /*
     Firestore tutorial I followed: Coding In Flow Firestore Tutorials
@@ -63,27 +73,31 @@ public class MainActivity2 extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference notebookRef = db.collection("Notebook");
     private DocumentReference noteRef = db.collection("Notebook").document("My First Note");
-    
+
     private LinearLayout assignmentLayout;
     private int buttonCount;
-    Button newbtn;
+    private Button newbtn;
+
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        super.onCreate(savedInstanceState);
+
 
         button = (Button) findViewById(R.id.addHomeworkButton);
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                openActivity3();
-            }
+
+                @Override
+                public void onClick(View v){
+                    openActivity3();
+                }
+
         });
 
-        calButton = (Button) findViewById(R.id.calendarButton);
+        calButton = (ImageButton) findViewById(R.id.calendarButton);
         calButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -93,42 +107,42 @@ public class MainActivity2 extends AppCompatActivity {
 
 
         transferData = (String) getIntent().getStringExtra("TRANSFER_DATA");
+        currentUser = (String) getIntent().getStringExtra("currentUser");
 
-        user = (String) getIntent().getStringExtra("currentUser");
 
-
-        textViewData = findViewById(R.id.text_view_data);
-        textViewData.setText(transferData);
-
+        //textViewData = findViewById(R.id.assignmentBox);
+        //textViewData.setText(transferData);
 
 
 
-            notebookRef.whereEqualTo("user",user)
-                    .get()
-                    // Query Snapshot = Multiple document snapshots
-                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                        @Override
-                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                            String data = "";
 
-                            // for loop to iterate through the query snapshots
-                            for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
-                                //For each  QueryDocumentSnapshot we will create a note object
-                                Note note = documentSnapshot.toObject(Note.class);
+        notebookRef.whereEqualTo("user",currentUser)
+                .get()
+                // Query Snapshot = Multiple document snapshots
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        String data = "";
 
-                                // TO DO: Add each note to an arraylist?
+                        // for loop to iterate through the query snapshots
+                        for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
+                            //For each  QueryDocumentSnapshot we will create a note object
+                            Note note = documentSnapshot.toObject(Note.class);
 
-                                String title = note.getTitle();
-                                String description = note.getDescription();
-                                String date = note.getDate();
-                                String user = note.getUser();
+                            // TO DO: Add each note to an arraylist?
 
-                                data = "\nTitle: " + title + "\nDescription:" + description + "\nDate:" + date;
-                                doAddButton(data);
-                            }
-                            textViewData.setText(data);
+                            String title = note.getTitle();
+                            String description = note.getDescription();
+                            String date = note.getDate();
+                            String user = note.getUser();
+
+                            data = "\nTitle: " + title + "\nDescription:" + description + "\nDate:" + date;
+                            doAddButton(title,description,date);
                         }
-                    });
+
+
+                    }
+                });
 
 
 
@@ -140,7 +154,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // SnapshotListener allows for realtime updates as soon as something changes in the document
+        //SnapshotListener allows for realtime updates as soon as something changes in the document
         /*noteRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
@@ -174,8 +188,6 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
 
-
-
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();//logout
         startActivity(new Intent(getApplicationContext(),loginActivity.class));
@@ -183,14 +195,38 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     public void openActivity3() {
+
         Intent intent = new Intent(this, addAssignmentActivity.class);
-        intent.putExtra("currentUser", user);
+        intent.putExtra("currentUser", currentUser);
         startActivity(intent);
     }
-    private void doAddButton(String s) {
+
+    public void openTimer() {
+        Intent intent = new Intent(this, timerActivity.class);
+        intent.putExtra("currentUser", currentUser);
+        startActivity(intent);
+    }
+
+    public void optionsPage() {
+        Intent intent = new Intent(this, AssignmentOptions.class);
+        intent.putExtra("currentUser", currentUser);
+        startActivity(intent);
+    }
+
+    public void openCalActivity() {
+        Intent intent = new Intent(this, calView.class);
+        intent.putExtra("currentUser", currentUser);
+        startActivity(intent);
+    }
+
+
+
+
+    private void doAddButton(String title, String description, String date) {
         assignmentLayout = (LinearLayout) findViewById(R.id.assignmentLayout);
 
         newbtn = new Button(this);
+        String s = "\nTitle: " + title + "\nDescription:" + description + "\nDate:" + date;
         newbtn.setText(s);
         assignmentLayout.addView(newbtn);
 
@@ -205,9 +241,9 @@ public class MainActivity2 extends AppCompatActivity {
         newbtn.setTransformationMethod(null);
         newbtn.setTextColor(Color.parseColor("#FFFFFF"));
         newbtn.setPadding(40,20,20,20);
+        newbtn.setTypeface(ResourcesCompat.getFont(this, R.font.circerounded));
         newbtn.setTextSize(20);
         buttonCount++;
-        newbtn.setTypeface(ResourcesCompat.getFont(this, R.font.circerounded));
 
 
         DrawableCompat.setTint(buttonDrawable, Color.parseColor(color1));
@@ -222,15 +258,24 @@ public class MainActivity2 extends AppCompatActivity {
         }
         newbtn.setGravity(Gravity.LEFT);
 
-       //android:gravity="left"
+        Intent intent = new Intent(this, AssignmentOptions.class);
+        intent.putExtra(TITLE, title);
+        intent.putExtra(DESCRIPTION, description);
+        intent.putExtra(DATE, date);
+
+        newbtn.setOnClickListener(clicks);
+
+
     }
 
 
-    public void openCalActivity() {
-        Intent intent = new Intent(this, calView.class);
-        intent.putExtra("currentUser", user);
-        startActivity(intent);
-    }
+        View.OnClickListener clicks = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                optionsPage();
+            }
+        };
+
+
+
 }
-
-
