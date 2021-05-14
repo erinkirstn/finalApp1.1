@@ -43,7 +43,7 @@ public class AssignmentOptions extends AppCompatActivity {
         startButton = (Button) findViewById(R.id.startButton);
         deleteButton = (Button) findViewById(R.id.deleteButton);
         transferData = (String) getIntent().getStringExtra("TRANSFER_DATA");
-        user = (String) getIntent().getStringExtra("currentUser");
+        currentUser = (String) getIntent().getStringExtra("currentUser");
         ddescription = intent.getStringExtra(MainActivity2.DESCRIPTION);
 
 
@@ -58,7 +58,7 @@ public class AssignmentOptions extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                notebookRef.whereEqualTo("user",currentUserser)
+                notebookRef.whereEqualTo("user",currentUser)
                         .get()
                         // Query Snapshot = Multiple document snapshots
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
