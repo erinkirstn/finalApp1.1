@@ -22,6 +22,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 public class timerActivity extends AppCompatActivity {
+    //Tutorial I used: Coding in Flow Timer Tutorial
+    //Link: https://codinginflow.com/tutorials/android/countdowntimer/part-4-time-input
+
+
     private EditText mEditTextInput;
     private TextView mTextViewCountDown;
     private Button mButtonSet;

@@ -118,6 +118,8 @@
         android:layout_marginBottom="402dp"
         android:background="@drawable/textboxdesign"
         android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
         android:fontFamily="@font/circerounded"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
